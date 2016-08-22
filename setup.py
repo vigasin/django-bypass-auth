@@ -9,7 +9,7 @@ classifiers = ["Programming Language :: Python",
                "Development Status :: 1 - Planning"]
 
 
-setup(name='django-auth-bypass',
+setup(name='django-bypass-auth',
       version='0.1',
       packages=find_packages(),
       description='Backend and Middleware for bypassing django authentication completely',
