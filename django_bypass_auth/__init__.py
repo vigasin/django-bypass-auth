@@ -4,7 +4,7 @@ from django.contrib.auth import get_user_model
 
 User = get_user_model()
 
-class FakeAuthBackend(object):
+class BypassAuthBackend(object):
     def authenticate(self, username=None, password=None, bypass=False):
         return User.objects.get(email=username)
 
@@ -19,4 +19,4 @@ class BypassAuthMiddleware(RemoteUserMiddleware):
     def process_request(self, request):
         user = User.objects.get(id=1)
         request.user = user
-        auth.login(request, user, backend=FakeAuthBackend)
+        auth.login(request, user, backend='django_bypass_auth.BypassAuthBackend')
