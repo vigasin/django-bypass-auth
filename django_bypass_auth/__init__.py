@@ -17,6 +17,6 @@ class BypassAuthBackend(object):
 
 class BypassAuthMiddleware(RemoteUserMiddleware):
     def process_request(self, request):
-        user = User.objects.get(id=1)
+        user = User.objects.first()
         request.user = user
         auth.login(request, user, backend='django_bypass_auth.BypassAuthBackend')
